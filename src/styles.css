@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Sora", "IBM Plex Sans", ui-sans-serif, sans-serif;
+  --color-bg: #07060d;
+  --color-surface: #14111c;
+  --color-surface-2: #1c1828;
+  --color-fg: #f6f3ee;
+  --color-muted: #a398b5;
+  --color-line: #2c2640;
+  --color-purple: #6b46c1;
+  --color-purple-2: #8b6ad1;
+  --color-gold: #f59e0b;
+  --color-gold-2: #fbbf24;
+  --color-buy: #12b981;
+  --color-sell: #ef4444;
+  --color-ink: #07060d;
+  --radius-sm: 0.65rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.4rem;
+}
+
+@layer base {
+  html {
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    min-height: 100%;
+    background:
+      radial-gradient(1200px 600px at 80% -10%, color-mix(in oklab, var(--color-purple) 28%, transparent), transparent 60%),
+      var(--color-bg);
+    color: var(--color-fg);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: var(--color-gold);
+    color: var(--color-ink);
+  }
+
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+}
+
+.gold-box {
+  background: linear-gradient(160deg, var(--color-gold-2) 0%, var(--color-gold) 46%, #d97706 100%);
+  color: var(--color-ink);
+}
+
+.glass {
+  background: color-mix(in oklab, var(--color-surface) 72%, transparent);
+  border: 1px solid color-mix(in oklab, var(--color-fg) 10%, transparent);
+  backdrop-filter: blur(18px);
+}
+
+.hairline {
+  border: 1px solid var(--color-line);
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-sheet {
+    border: none;
+    background: white;
+    color: black;
+    box-shadow: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
